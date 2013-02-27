@@ -1,6 +1,6 @@
 <?php
-require_once('/usr/home/c2commerce/trademark/tcpdf/config/lang/eng.php');
-require_once('/usr/home/c2commerce/trademark/tcpdf/tcpdf.php');
+require_once('tcpdf/config/lang/eng.php');
+require_once('tcpdf/tcpdf.php');
 
 $title = $_POST['registrant'];
 $registrant = $_POST['registrant'];
