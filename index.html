@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<head>
+	<title>Trademark Demo</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Trademark Parsing Demo">
+	<link rel='stylesheet' type='text/css' href='/css/default.css' />
+	<link rel='stylesheet' type='text/css' href='/css/redmond/jquery-ui-1.10.1.custom.min.css' />
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
+	<script type="text/javascript">
+		$.ajax({
+			url: 'parse_trademarks.php'
+		}).done(function(data) {
+            $("#trademarkAccordion").html('');
+			buildPage(JSON.parse(data));
+			$("#trademarkAccordion").accordion({
+				collapsible: true,
+				heightStyle: "content"
+			});
+		});
+
+        /**
+         * The buildPage function accepts the results of the AJAX call and parses the results
+         * to build a page with the results
+         *
+         * @author     Aaron Harvey
+         * @param data mixed is the JSON string returned from the AJAX call
+         *
+         */
+		function buildPage(data) {
+			$(data).each(function(key, value) {
+				var _this = value;
+				var content = '<h3>(SN: ' + _this.serialNumber[0] + ') ' + _this.registrant[0] + '</h3>' +
+				'<div>' +
+				'<div class=pdf_export>'+
+                    '<form action="build_pdf.php" method="post">' +
+                    '<input type="hidden" name="registrant" value="'+ _this.registrant[0] +'">' +
+                    '<input type="hidden" name="serial_number" value="'+ _this.serialNumber[0] +'">' +
+                    '<input type="hidden" name="trademark_id" value="'+ _this.markIdentification[0] +'">' +
+                    '<input type="hidden" name="filing_date" value="'+ _this.filingDate +'">' +
+                    '<input type="hidden" name="last_update" value="'+ _this.lastStatusUpdate +'">' +
+                    '<input type="hidden" name="description" value="'+ _this.description[0] +'">' +
+                    '<input type="hidden" name="address" value="'+ _this.streetAddress[0] + ';' + _this.city[0] + ';' + _this.state[0] + ';' + _this.postCode[0]  +'"> ' +
+                    '<input type="image" src="images/pdf_icon.png" name="submit" width="38" height="49">' +
+                    'Export<br/>'+
+                    '</form>' +
+				'</div>' +
+				'<p>' +
+				'<span class=spanhead>Mark ID:</span> ' + _this.markIdentification[0] + '<br/>' +
+				'<span class=spanhead>Filing Date:</span> ' + _this.filingDate + '<br/>' +
+				'<span class=spanhead>Last Update:</span> ' + _this.lastStatusUpdate + '<br/>' +
+				'<span class=spanhead>Address:</span> ' + _this.streetAddress[0] + ' ' + _this.city[0] + ' ' + _this.state[0] + ' ' + _this.postCode[0] + '<br/>' +
+				'<span class=spanhead>Description:</span> ' + _this.description[0] + '<br/>' +
+				'</p>' +
+				'</div>';
+				$("#trademarkAccordion").append(content);
+			});
+		}
+	</script>
+</head>
+<body>
+	<div id="pageWrapper">
+        <h1>Trademark Demo Page</h1>
+		<div id="trademarkAccordion">
+			<img src="/images/loading_icon.gif">
+		</div>
+	</div>
+	
+</body>

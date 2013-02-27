@@ -1,0 +1,5 @@
+body { margin: 0px; background-color: #DDDDDD; }
+#pageWrapper { padding: 10px; width: 940px; margin: 0px auto; border: 1px solid black; border-radius: 1em; }
+.spanhead { color: #2E6E9E; font-weight: bold;}
+.pdf_export {border: 1px solid black; float: right; height: 70px; margin: 5px; text-align: center; width: 70px; font-size: .6em; background-color: #E4F2FC; border-radius: 1em;}
+.pdf_export img {margin-top: 3px;}

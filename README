@@ -1,0 +1,31 @@
+Parse Trademarks
+@author Aaron Harvey
+@version 1.0
+
+Parse trademarks accepts an xml that was downloaded from
+http://www.google.com/googlebooks/uspto-trademarks-recent-applications.html
+
+It parses the xml file, using simplexml, stores the relevant contents in a class
+that implements a custom USPTO interface and extends a skeleton class (contains only a getter).
+After the relevant pieces of information for each trademark application is extracted from the
+xml file, an object is built and stored in an array.
+
+Following the completion of XML parsing, the array of objects is converted into a JSON object which
+is accessed by the index.html file through AJAX.  The index.html file then leverages jQuery to
+build the output and jQuery UI to display the information in an easier to read format.
+
+###### LICENSE #####
+MIT License (MIT)
+Copyright (c) 2013 Aaron Harvey
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit
+persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
