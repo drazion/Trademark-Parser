@@ -1,5 +1,5 @@
 <?php
-require_once ('/usr/home/c2commerce/trademark/trademark_class.php');
+require_once ('trademark_class.php');
 
 $file = "xml/apc120527.xml";
 $xml = simplexml_load_file($file);
